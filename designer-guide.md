@@ -355,8 +355,6 @@ UNFINISHED BELOW THIS POINT
 * Widget Templates
 * <mt:WidgetSet>
 
-### Adding Userpics to Your Comments
-
 ### Adding Search to Your Site
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -396,17 +394,6 @@ UNFINISHED BELOW THIS POINT
 ### Aggregating Content from Other Blogs
 ### Adding Author Archives
 ### Displaying a List of Authors for Your Site
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-## Adding Community Features
-### Creating User Profiles
-### Defining Custom User Profile Fields
-### Customizing the Edit Profile Form
-### Accepting User Generating Content
-### Adding a List of Recent Members
-### Adding a Sign-in/Sign-out Link
-### User Blogs
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
