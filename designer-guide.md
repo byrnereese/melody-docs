@@ -1,6 +1,6 @@
 # Building Web Sites with Melody
 
-Welcome to "Building Web Sites with Melody," a definitive guide for designers and developers on how to take a blank canvas and create within it a robust, powerful, feature rich community oriented web site. This guide is divided into four major sections, corresponding to and progressing roughly in accordance to the familiarity you will slowly build with the Melody Publishing Platform. They are:
+Welcome to "Building Web Sites with Melody," a definitive guide for designers and developers on how to take a blank canvas and create within it a robust, powerful, feature rich community oriented web site. This guide is divided into three major sections, corresponding to and progressing roughly in accordance to the familiarity you will slowly build with the Melody Publishing Platform. They are:
 
 * **Laying the Groundwork** - This section of the guide will help you become familiar with the fundamentals of blogging, the basics of Melody, and its templating language. At the end of this section you will have created a basic web site and a blog, complete with threaded comments, feeds, and navigation. You will also have become familiar with the basics of Melody's templating language.
 
@@ -28,7 +28,7 @@ As a result some of the code samples we will discuss contain large amounts of HT
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Laying the Groundword
+# Laying the Groundwork
 
 ## Building Your First Web Site and Blog
 
@@ -165,23 +165,184 @@ Our first task will be output your web sites name into the `<title>` tag and in 
 Congratulations, you have successfully created your web site. It is simple right now, just a homepage and a basic style, but you are well on your way. Now it is time to expand your web site with additional content and see how Melody can serve as an excellent web site content management tool.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Extending Your Web Site
+
+By now, you should be familiar with the very basics of Melody's templating, theme and design system. Plus, if you have been following along then you also have in place a very simple web site you have built using Melody. Although to say this web site is "simple" is an understatement because in truth all you have done is published a single page: the homepage. 
+
+To some this may actually be more than sufficient, but in all likelihood this barely scratches the surface of what you have envisioned for your web site. 
+
+In this section, we will begin to slow expand upon what you have already created through a series of simple to follow recipes. Each recipe will not only show you how to add a feature or two to your web site, they will also introduce you to an important concept that will aid you in some way for virtually any web site you may want to build.
+
+Let's begin.
+
+## Add an About Page to your Web Site
+
+Suppose you need to add a page to your web site. This section will illustrate a number of different ways to do that using Melody. 
+
+Topics taught in this section:
+
+* The difference between an index template and a page.
+* An introduction to archive mappings, specifically page archive mappings.
+* How to modularize your web site to share common elements easily between multiple templates and pages.
+
+### Index Templates and Page Templates
+
+For those familiar with creating as index template to publish your web site's homepage, it will would be a relatively straight forward process to use an index template to also publish an about page for you web site. The process would go something like this:
+
+1. Navigate to Templates from the Design Menu.
+2. Click Create Index Template.
+3. Enter in the name of and the HTML for your page in the spaces provided. 
+4. Click Save and Publish.
+
+There, you have a page. In fact, the steps above was at one point the most commonly used approach to pages for most Movable Type users. 
+
+In Melody however, as in more recent versions of Movable Type, there is a far quicker and more flexible way to achieve the same result: Page Templates. 
+
+A page template provides the designer and users with the following advantages:
+
+* Designers can define the default look and feel, or "chrome" for every page on the web site. 
+
+* Melody users do not have to be encumbered with having to know HTML, CSS or the Melody Templating Language. All they have to do is *enter the content for the page.*
+
+To put it another way, **pages produced by page templates are nice because they are simple**. A user need only select the "Page" menu item from the Create menu and they can be publishing a new page for their web site in seconds. However, in their simplicity, they do lack certain capabilities index templates have. To help you better understand these differences and make a more informed decision with regards to what will be right for you, read the following differences carefully:
+
+* The content entered for a page cannot contain any Melody template code and are thus relatively static. 
+
+* Users are free to use a rich text, or WYSIWYG editor when creating pages. They cannot use such an editor when editing index templates.
+
+* More?
+
+Let's assume though that you have weighed your options and have decided that using a page template is best for you at this point. Let's learn how to add a page template to your web site now.
+
+**Setting Up a Page Template**
+
+Before you can create pages, your theme must first define a page template and an archive mapping for that template. Here is how you would do that:
+
+1. Navigate to Templates from the Design Menu.
+2. Under the Archive Templates table, click Create Archive Template: Page. 
+3. Enter the information and HTML about your page template in the space provided. Click Save.
+4. Once the page has been saved, expand the Template Options area just above the save buttons
+5. Click "Create Archive Mapping" and select `folder-path/page-basename.html` from the Path pull-down menu.
+
+With the page template and archive mapping in place, you can now publish pages to your web site with ease. 
+
+### Diversion: An Introduction to Template Modules
+
+Now that we have created at least two templates in your system, an index and archive template, you have almost certainly have duplicate blocks of HTML in your templates. The most common elements to be replicated across templates are the header and footer of your web site.
+
+Technically there is nothing wrong with having template code replicated across multiple templates, but generally is considered non-ideal because it makes templates harder to manage and update.
+
+Consider for example that you want to update your site's header in some way, perhaps by changing your site's logo or masthead. If the HTML for your header is replicated across multiple templates then you will have to make the necessary changes to your header as many times as there are templates for your web site. This can be time consuming, and potentially error prone. 
+
+A better approach would be to share the HTML that is common between your templates in some way, which is why we have template modules. Template modules are nothing more than fragments of HTML and MTML that can be included or referenced by name from other templates. When used effectively, that means that if you needed to update your header, you would only need to edit the one relevant template module and you would be done.
+
+Let's look at a simple example. Here is the MTML for a simple header of a web site. It is placed in a hypothetical template module called "Site Header":
+
+    <div id="header">
+      <h1><$mt:BlogName$></h1>
+      <h2><$mt:BlogDescription$></h2>
+    </div>
+
+The header fragment can then be placed in each of your site's templates via the `<mt:include>` tag:
+
+    <html>
+      <head>
+        <title><$mt:BlogName$></title>
+      </head>
+      <body>
+        <$mt:include module="Site Header"$>
+        <div id="content">
+        </div>
+      </body>
+    </html>
+
+Template modules also offer another key, but often under appreciated advantage: they make your templates much easier to read. When you use template modules you can effectively collapse large blocks of MTML into a single line. Consider for example the following Main Index template that is common for many blogs:
+
+    <html>
+      <head>
+        <title><$mt:BlogName$></title>
+        <$mt:include module="HTML Head"$>
+      </head>
+      <body>
+        <$mt:include module="Banner Header"$>
+        <div id="content">
+          <mt:Entries lastn="auto">
+            <$mt:include module="Entry Summary"$>
+          </mt:Entries>
+        </div>
+        <$mt:include module="Banner Footer"$>
+      </body>
+    </html>
+
+In this example you should hopefully see how template modules can dramatically improve the readability of your templates by dramatically reducing their complexity.
+
+## Building Navigation for Your Web Site
+
+With the introduction of pages to your web site, a new need emerges: giving your users the ability to easily find their way around the site. Perhaps the most common way web sites help users is this respect is with some form of global navigation that reflects the major destinations or content areas within a site. 
+
+In the following example we will create the most basic form of web site navigation: a simple horizontal "nav bar" that lists all of the pages within your web site. To begin lets create a new template module called "Navigation." In the template body, enter the following:
+
+    <ul id="nav">
+      <li><a href="<$mt:BlogURL$>">Home</a></li>
+      <mt:Pages>
+      <li>
+        <a href="<$mt:PagePermalink$>">
+          <$mt:PageTitle$>
+        </a>
+      </li>
+      </mt:Pages>
+    </ul>
+
+Then in your banner or site header module (assuming you have created one), include the new navigational system.
+
+    <div id="header">
+      <h1><$mt:BlogName$></h1>
+      <h2><$mt:BlogDescription$></h2>
+      <$mt:include module="Navigation"$>
+    </div>
+
+Once the navigation is in place, then it is just a matter of styling the markup to produce the desired visual. For a horizontal nav bar,  this is what that CSS might look like:
+
+    ul#nav {
+      clear: both;
+    }
+    ul#nav li {
+      float: left;
+    }
+
+Ok, the CSS above is perhaps too simple, but the gist should be clear: stack each of your navigational elements in a list, then float them using CSS.
+
+**Picking which Pages to Appear in the Site's Navigation**
+
+The sample code above is perfect for a small web site with only a handful of pages. What happens though when you have possibly tens or even hundreds of pages? You can't possibly list them all in a single nav bar. That would be overwhelming to a site's visitors, but more importantly it would most likely be ugly. And we can't have *that*!
+
+So when a web site has more pages than can be fit in a single nav bar, it becomes important for site owners to be able to specify which pages they want promoted there. To give administrators the control they are looking for we make use of  one of Melody's most useful features: the hidden tag. Before however we talk about hidden tags, let's make sure we know what a basic, run-of-the-mill tag is. 
+
+Tags in many respects are nothing more than keywords that one can assign to a piece of content. Except tags, unlike keywords, are usually published and made visible to readers. Tags are also often hyperlinked allowing readers to click on the keyword or tag to find other content that has also been tagged with the same word or phrase. 
+
+Hidden tags therefore are a special kind of tag that can only be seen and edited from within the Melody administrative interface. They are never made visible to the public. They therefore provide designers with a convenient mechanism by which to filter content in the site by some arbitrary token.
+
+In Melody a hidden tag is denoted by prepending the "@" sign to the tag in question.
+
+Let's apply this concept to a site's navigation to illustrate. Suppose your website has over a hundred pages, but your site's horizontal nav bar only has room for five of those pages (give or take). To quickly give your users the ability to select which five pages they want to appear across the top of their site's banner, we use the hidden tag `@topnav` to filter our list of pages:
+
+    <ul id="nav">
+      <li><a href="<$mt:BlogURL$>">Home</a></li>
+      <mt:Pages tag="@topnav">
+      <li>
+        <a href="<$mt:PagePermalink$>">
+          <$mt:PageTitle$>
+        </a>
+      </li>
+      </mt:Pages>
+    </ul> 
+
+Once in place, you can instruct users to select which pages they want to appear in the navigation by editing each of the pages in question and adding the `@topnav` tag to the list of tags associated with the page. Then republish your site and presto, your new nav will appear.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 UNFINISHED BELOW THIS POINT
 
-### Create an About Page
-
-* You could: create another index template
-* Page Templates
-* Page Archive Mapping
-* Header/Footer Module
-  * <mt:include>
-  * <mt:includeblock>
-
-### Building Navigation for Your Site
-
-* Navigation Module
-* Horizontal Navigation
-* <mt:Pages>
-* Using tags to control menu, e.g. @nav
 
 ### Adding a Blog to your Site
 
@@ -245,6 +406,7 @@ UNFINISHED BELOW THIS POINT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ## Advanced Topics
+### IncludeBlock
 ### Adding a Map to Your Blog
 ### Collating Actions and Posts
 ### Adding a Podcast to your Site
