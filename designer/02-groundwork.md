@@ -1,38 +1,6 @@
-# Building Web Sites with Melody
+# Laying the Groundwork: Building Your First Web Site and Blog
 
-Welcome to "Building Web Sites with Melody," a definitive guide for designers and developers on how to take a blank canvas and create within it a robust, powerful, feature rich community oriented web site. This guide is divided into three major sections, corresponding to and progressing roughly in accordance to the familiarity you will slowly build with the Melody Publishing Platform. They are:
-
-* **Laying the Groundwork** - This section of the guide will help you become familiar with the fundamentals of blogging, the basics of Melody, and its templating language. At the end of this section you will have created a basic web site and a blog, complete with threaded comments, feeds, and navigation. You will also have become familiar with the basics of Melody's templating language.
-
-* **Extending Your Web Site** - With a solid foundation having been established, thanks to "Laying the Groundwork," this section will instruct you on a number of features you can elect to add to your web site. This section includes such topics as adding "Digg This" buttons, comment feeds, advertising, related entries and much more.
-
-* **Advanced Topics** - In the final section, we will explore features that make use of Javascript and some of Melody's more powerful features like multi-blog aggregation.
-
-## Who is this Guide For?
-
-This guide has content valuable to every Melody user. However, this guide was designed for users, freelance designers and consultants looking to familiarize themselves with the Melody platform. This guide begins with the assumption that you know very little about Melody, or its companion product Movable Type, and through a logical sequence of tutorials it aims to expand the reader's ability and confidence in their building web sites, blogs and social networks with Melody.
-
-In order to use this guide properly however, we must make a few basic assumptions:
-
-* You have successfully installed Melody.
-* You understand the basics of HTML and CSS.
-* You can work with or at least read Javascript.
-
-TODO - FR: Open Source the Professional Web Site as it is the basis for this guide.
-
-## Using this Guide
-
-It is the goal of this guide to not only instruct you on how to build web sites with Melody, but also to produce a well designed web site in the process that you would be proud to use yourself. 
-
-As a result some of the code samples we will discuss contain large amounts of HTML and Movable Type template tags. To make our samples clearer you may sometimes notice discrepancies between the large code samples we provide for you to cut and paste into Melody, and the excerpts from those code samples we use as a basis for dissection and discussion. These differences often come in the form of an abbreviation in some way, such as in lacking the *complete* HTML you may find in the full example. Our hope is that this will make it easier for us to more easily highlight the most important concepts to learn in any given section.
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-# Laying the Groundwork
-
-## Building Your First Web Site and Blog
-
-### Start from Scratch
+## Start from Scratch
 
 Congratulations, you have decided to take the first step in becoming an expert in Movable Type. In what might be considered rites of initiation your first task is to create a blog in Movable Type, and then to **delete all of its templates**, thereby cleansing you of any preconceptions you have about Movable Type and how it works. When this process is complete, your system will consist exclusively of a raw publishing engine. And that's it, nothing more. Your system will then be ready for you to begin layering on one feature after another, and in so doing slowly build a strong foundation of knowledge in the Movable Type Publishing Platform.
 
@@ -52,7 +20,7 @@ Let's begin.
 
 Like a newly committed monk freed of his earthly possessions you must feel a great release from all your burdens. Or perhaps not, but at least you are now ready to officially begin your training.
 
-#### Create a Homepage
+## Create a Homepage
 
 So you want to create a web site? The good news is that you have already contracted a designer to design your web site and create its HTML. Right? Now it is your job to deploy this site and augment it with content.
 
@@ -164,17 +132,7 @@ Our first task will be output your web sites name into the `<title>` tag and in 
 
 Congratulations, you have successfully created your web site. It is simple right now, just a homepage and a basic style, but you are well on your way. Now it is time to expand your web site with additional content and see how Melody can serve as an excellent web site content management tool.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-# Extending Your Web Site
-
-By now, you should be familiar with the very basics of Melody's templating, theme and design system. Plus, if you have been following along then you also have in place a very simple web site you have built using Melody. Although to say this web site is "simple" is an understatement because in truth all you have done is published a single page: the homepage. 
-
-To some this may actually be more than sufficient, but in all likelihood this barely scratches the surface of what you have envisioned for your web site. 
-
-In this section, we will begin to slow expand upon what you have already created through a series of simple to follow recipes. Each recipe will not only show you how to add a feature or two to your web site, they will also introduce you to an important concept that will aid you in some way for virtually any web site you may want to build.
-
-Let's begin.
+TODO - ease transition into next session
 
 ## Add an About Page to your Web Site
 
@@ -339,93 +297,4 @@ Let's apply this concept to a site's navigation to illustrate. Suppose your webs
     </ul> 
 
 Once in place, you can instruct users to select which pages they want to appear in the navigation by editing each of the pages in question and adding the `@topnav` tag to the list of tags associated with the page. Then republish your site and presto, your new nav will appear.
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-UNFINISHED BELOW THIS POINT
-
-
-### Adding a Blog to your Site
-
-* Blog Index template
-* Entry Template
-* Entry Listing Template
-* Adding Javascript
-
-### Adding a Feed to your Blog
-
-* RSS vs Atom
-* Atom Template
-* Adding a <link rel="alternate"> tag
-
-### Adding Widgets to Your Blog
-
-* WidgetManager
-* Widget Templates
-* <mt:WidgetSet>
-
-### Adding Search to Your Site
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-## Extending Your Web Site
-
-### Adding a Comment Feed to your Blog
-
-* About comment feeds
-  * Atom
-  * <in-reply-to>
-  * <link rel="replies">
-* Site-wide comment feed
-* Per-Entry comment feed
-
-### Adding Advertising to your Site
-
-* AdSense and Others
-* Creating ad widgets
-* Show ads only to people coming from search
-
-### Adding a Print Stylesheet for your Site
-### Adding Digg Buttons and ShareThis
-### Adding Related Entries 
-### Displaying a List of Nested Categories
-### Inserting a Javascript Gallery of Photos
-### Switch to Nested Comments to Your Blog
-### Adding Action Streams to Your Blog
-### Sticky Posts
-### Creating Featured Posts
-### Adding Google Analytics to Your Site
-### Adding Feedburner to Your Site
-### Creating a Slideshow of Featured Content
-### Featuring Comments
-### Allowing Readers to Subscribe to New Comments
-### Building Drop Down Menus from Categories
-### Aggregating Content from Other Blogs
-### Adding Author Archives
-### Displaying a List of Authors for Your Site
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-## Advanced Topics
-### IncludeBlock
-### Adding a Map to Your Blog
-### Collating Actions and Posts
-### Adding a Podcast to your Site
-### Pagination?
-### Inserting YouTube Videos on your Blog
-### AJAX Commenting
-### Setting up Multible Blogs
-
-#### Aggregating Content Between Blogs
-
-* blog_ids
-
-#### Keeping Content Fresh 
-
-* MultiBlog
-* MultiBlog 2.1 beta
-
-#### Global Template Modules
-#### Creating a Product Catalog
-#### Building a Portfolio Web Site
-#### Adding Press Releases to your Web Site
 
